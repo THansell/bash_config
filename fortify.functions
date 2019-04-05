@@ -28,3 +28,20 @@ function set_buildid {
     fi
 }
         
+function clean_buildid {
+    if [ "x${FORTIFY_BUILDID}" = "x" ]; then
+        echo "No Build ID Set"
+    else
+        echo "Cleaning [${FORTIFY_BUILDID}]"
+        sourceanalyzer -b ${FORTIFY_BUILDID} -clean 
+    fi
+}
+
+function scan_buildid {
+    if [ "x${FORTIFY_BUILDID}" = "x" ]; then
+        echo "No Build ID Set"
+    else
+        echo "Scanning [${FORTIFY_BUILDID}]"
+        sourceanalyzer -b ${FORTIFY_BUILDID} -scan -f ${FORTIFY_BUILDID}.fpr
+    fi
+}
