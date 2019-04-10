@@ -18,4 +18,4 @@ into ~/.bash_functions.
 The put the code above at the end of your ~/.bashrc file.
 
 The files in the disabled folders are groups of bash functions organized by use.
-If you want to active those functions copy then from disabled to the 
+If you want to active those functions copy then from disabled to the root of the .bash_functions directory.
