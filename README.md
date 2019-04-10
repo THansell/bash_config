@@ -11,3 +11,11 @@ if [ -d ~/.bash_functions ]; then
 fi
 ```
 
+## How to use this repo
+
+For ease of use, and of capturing changes and tracking versions with git, clone this repo
+into ~/.bash_functions.
+The put the code above at the end of your ~/.bashrc file.
+
+The files in the disabled folders are groups of bash functions organized by use.
+If you want to active those functions copy then from disabled to the 
