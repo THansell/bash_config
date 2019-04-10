@@ -17,5 +17,5 @@ For ease of use, and of capturing changes and tracking versions with git, clone 
 into ~/.bash_functions.
 The put the code above at the end of your ~/.bashrc file.
 
-The files in the disabled folders are groups of bash functions organized by use.
-If you want to active those functions copy then from disabled to the root of the .bash_functions directory.
+The files in the stockpile folder are groups of bash functions organized by use.
+If you want to active those functions copy them from stockpile to the root of the .bash_functions directory.
