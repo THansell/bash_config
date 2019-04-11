@@ -1,0 +1,32 @@
+#!/bin/bash
+#
+# Configure the bash_config files in your home directory
+#
+
+#
+# .bash_functions
+#
+if [ -d ${HOME}/.bash_functions ]; then
+    echo "[${HOME}/.bash_functions] directory already exists. Won't overwrite it"
+elif [ -f ${HOME}/.bash_functions ]; then
+    echo "[${HOME}/.bash_functions] file already exists. Won't overwrite it"
+else
+    echo ln -s $PWD/bash_functions ${HOME}/.bash_functions
+    ln -s $PWD/bash_functions ${HOME}/.bash_functions
+fi
+
+if [ -d ${HOME}/.bash_aliases ]; then
+    echo "[${HOME}/.bash-aliases] directory already exists. Won't overwrite it"
+elif [ -f ${HOME}/.bash_aliases ]; then
+    echo "[${HOME}/.bash-aliases] directory already exists. Won't overwrite it"
+else
+    echo ln -s $PWD/bash_aliases ${HOME}/.bash_aliases
+    ln -s $PWD/bash_aliases ${HOME}/.bash_aliases
+fi
+
+if [ -f ${HOME}/.vimrc ]; then
+    echo "[${HOME}/.vimrc] file already exists. Won't overwrite it"
+else
+   echo ln -s $PWD/rc_files/vimrc ${HOME}/.vimrc
+   ln -s $PWD/rc_files/vimrc ${HOME}/.vimrc
+fi
