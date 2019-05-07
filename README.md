@@ -1,5 +1,5 @@
 # bash_functions
-Place to keep trackp of useful bash functions I write
+Place to keep track of useful bash functions I write
 
 place these lines of code at the end of the ~/.bashrc
 
