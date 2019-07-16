@@ -1,4 +1,4 @@
-# bash_functions
+# bash_functions-
 Place to keep track of useful bash functions I write
 
 place these lines of code at the end of the ~/.bashrc
@@ -6,7 +6,7 @@ place these lines of code at the end of the ~/.bashrc
 ```bash
 if [ -d ~/.bash_functions ]; then
     for file in $(ls ~/.bash_functions/*.functions); do
-        . $file;
+        . $file
     done
 fi
 ```

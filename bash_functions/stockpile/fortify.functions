@@ -1,5 +1,5 @@
 function list_buildids() {
-    find ~/.fortify/sca17.1/build/ -mindepth 1 -maxdepth 1 -type d -exec basename {} \;
+    find ~/.fortify/sca*/build/ -mindepth 1 -maxdepth 1 -type d -exec basename {} \;
 }
 
 function select_buildid() {
@@ -37,6 +37,10 @@ function clean_buildid {
     fi
 }
 
+function clear_buildids {
+    rm -rf ~/.fortify/sca*/build/*
+}
+
 function scan_buildid {
     if [ "x${FORTIFY_BUILDID}" = "x" ]; then
         echo "No Build ID Set"
@@ -44,4 +48,16 @@ function scan_buildid {
         echo "Scanning [${FORTIFY_BUILDID}]"
         sourceanalyzer -b ${FORTIFY_BUILDID} -scan -f ${FORTIFY_BUILDID}.fpr
     fi
+}
+
+function maven_fclean {
+    mvn com.hpe.security.fortify.maven.plugin:sca-maven-plugin:clean
+}
+
+function maven_ftranslate {
+    mvn com.hpe.security.fortify.maven.plugin:sca-maven-plugin:translate
+}
+
+function maven_fscan {
+    mvn com.hpe.security.fortify.maven.plugin:sca-maven-plugin:scan
 }
