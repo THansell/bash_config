@@ -1,7 +1,5 @@
 # bash_functions
-Place to keep track of useful bash functions I write
-
-place these lines of code at the end of the ~/.bashrc
+Place these lines of code at the end of the ~/.bashrc
 
 ```bash
 if [ -d ~/.bash_functions ]; then
