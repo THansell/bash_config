@@ -5,11 +5,13 @@ place these lines of code at the end of the ~/.bashrc
 
 ```bash
 if [ -d ~/.bash_functions ]; then
-    for file in $(ls ~/.bash_functions/*.functions); do
-        . $file
-    done
+  for file in $(ls ~/.bash_functions/*.functions); do
+    source $file
+  done
+elif [ -f ~/.bash_functions ]; then
+  source ~/.bash_functions
 fi
-```
+````
 
 ## How to use this repo
 
