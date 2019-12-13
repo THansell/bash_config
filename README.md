@@ -29,6 +29,7 @@ Your .bashrc file may already have something like this:
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
+````
 
 Which treats the .bash_aliases file as a regular file. To use the .bash_aliases as a directory you should
 change the .bashrc file to the following:
