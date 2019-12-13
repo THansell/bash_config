@@ -22,7 +22,7 @@ The files in the bash_functions stockpile folder are groups of bash functions or
 If you want to activate those functions create a symbolic link from stockpile folder
 to the bash_functions directory.
 
-# bash_aliaes
+# bash_aliases
 
 Your .bashrc file may already have something like this:
 ```bash
