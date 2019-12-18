@@ -1,0 +1,27 @@
+#Initially update ubuntu with apt
+sudo apt update
+sudo apt upgrade -y
+
+# Change the default editor
+sudo update-alternatives --config editor
+# Select your favorite editor (I choose vim)
+
+# Modify /etc/sudoers file
+# Change
+%sudo   ALL=(ALL:ALL) ALL 
+# to
+%sudo   ALL=(ALL:ALL) NOPASSWD:ALL 
+
+# Install latest git
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt update
+sudo apt install git or sudo apt update -y
+
+# Install Java
+sudo apt install default-jdk
+
+# Download Maven
+wget https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -P /tmp
+sudo tar xf /tmp/apache-maven-*.tar.gz -C /opt
+sudo ln -s /opt/apache-maven-3.6.3/ /opt/maven
+
