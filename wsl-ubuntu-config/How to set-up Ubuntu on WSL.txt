@@ -16,6 +16,8 @@ sudo update-alternatives --config editor
 sudo add-apt-repository ppa:git-core/ppa
 sudo apt update
 sudo apt install git or sudo apt update -y
+git config --global user.email "thansell@nextgenfed.com"
+git config --global user.name "Tim Hansell"
 
 # Install Java
 sudo apt install default-jdk
