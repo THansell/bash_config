@@ -1,7 +1,7 @@
 #Initially update ubuntu with apt
 sudo apt update
 sudo apt upgrade -y
-
+sudo apt install unzip tree
 # Change the default editor
 sudo update-alternatives --config editor
 # Select your favorite editor (I choose vim)
@@ -35,11 +35,23 @@ sudo apt install ansible
 # Install pip
 sudo apt install python-pip
 
+# Install python3.6
+
+sudo apt install python3.6-dev
+
 # Install gdal
 sudo add-apt-repository ppa:ubuntugis/ppa
 sudo apt update
 sudo apt install gdal-bin libgdal-dev
-export CPLUS_INCLUDE_PATH=/usr/include/gdal
-export C_INCLUDE_PATH=/usr/include/gdal
-pip install GDAL
+sudo apt install python-gdal
+sudp apt install python3-gdal
 
+# NodeJS
+sudo apt install curl
+curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+sudo apt install nodejs
+
+# AWSCLI
+curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
