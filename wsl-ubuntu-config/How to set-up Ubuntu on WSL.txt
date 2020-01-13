@@ -1,0 +1,57 @@
+#Initially update ubuntu with apt
+sudo apt update
+sudo apt upgrade -y
+sudo apt install unzip tree
+# Change the default editor
+sudo update-alternatives --config editor
+# Select your favorite editor (I choose vim)
+
+# Modify /etc/sudoers file
+# Change
+%sudo   ALL=(ALL:ALL) ALL 
+# to
+%sudo   ALL=(ALL:ALL) NOPASSWD:ALL 
+
+# Install latest git
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt update
+sudo apt install git or sudo apt update -y
+git config --global user.email "thansell@nextgenfed.com"
+git config --global user.name "Tim Hansell"
+
+# Install Java
+sudo apt install default-jdk
+
+# Download Maven
+wget https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -P /tmp
+sudo tar xf /tmp/apache-maven-*.tar.gz -C /opt
+sudo ln -s /opt/apache-maven-3.6.3/ /opt/mavensudo apt-add-repository ppa:ansible/ansible
+
+# Download Ansible
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt update
+sudo apt install ansible
+
+# Install pip
+sudo apt install python-pip
+
+# Install python3.6
+
+sudo apt install python3.6-dev
+
+# Install gdal
+sudo add-apt-repository ppa:ubuntugis/ppa
+sudo apt update
+sudo apt install gdal-bin libgdal-dev
+sudo apt install python-gdal
+sudp apt install python3-gdal
+
+# NodeJS
+sudo apt install curl
+curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+sudo apt install nodejs
+
+# AWSCLI
+curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
