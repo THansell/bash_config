@@ -3,7 +3,7 @@ Place these lines of code at the end of the ~/.bashrc
 
 ```bash
 if [ -d ~/.bash_functions ]; then
-  for file in $(ls ~/.bash_functions/*.functions); do
+  for file in $(find -L ~/.bash_functions -maxdepth 1 -type f); do
     source $file
   done
 elif [ -f ~/.bash_functions ]; then
@@ -34,7 +34,7 @@ change the .bashrc file to the following:
 
 ```bash
 if [ -d ~/.bash_aliases ]; then
-  for file in $(ls ~/.bash_aliases); do
+  for file in $(find -L ~/.bash_aliases -maxdepth 1 -type f); do
     source $file
   done
 elif [ -f ~/.bash_aliases ]; then
