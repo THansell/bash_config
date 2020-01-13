@@ -17,6 +17,16 @@ check_current_branches() {
     done
 }
 
+mti_fetch_pull() {
+  local d
+  cd $MTI_REPO_DIR
+  for d in $(ls -d */)
+  do
+    echo "--start $d"
+    (cd $d; git fetch -p; git pull)
+    echo "$--done $d"
+  done
+}
 edump () {
     local index=$1
     elasticdump \
