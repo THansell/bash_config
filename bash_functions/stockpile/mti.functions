@@ -27,6 +27,18 @@ mti_fetch_pull() {
     echo "$--done $d"
   done
 }
+
+mti_checkoout_develop() {
+  local d
+  cd $MTI_REPO_DIR
+  for d in $(ls -d */)
+  do
+    echo "--start $d"
+    (cd $d; git checkout develop; git pull)
+    echo "$--done $d"
+  done
+}
+
 edump () {
     local index=$1
     elasticdump \
