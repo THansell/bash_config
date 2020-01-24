@@ -1,2 +1,2 @@
 alias aws="aws2"
-alias awssh="ssh -i ~/.ssh/ngamtuser.pem"
+alias awssh="ssh -i ~/.ssh/ngamtiuser.pem"

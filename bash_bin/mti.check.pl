@@ -1,15 +1,15 @@
 #! /usr/bin/env perl
 
-use 5.020;
 use warnings;
 use autodie;
-
 use Cwd qw( cwd abs_path );
 use File::Basename;
+use lib dirname(abs_path($0));
 use Getopt::Long;
 use YAML::Tiny;
 
 use Toolkit;
+use Utilities qw( message green dump_table );
 
 my %opts = ();
 
@@ -18,7 +18,6 @@ if ( !GetOptions( \%opts, 'verbose', 'commit' ) ) {
 }
 
 main();
-exit(0);
 
 sub main {
 
@@ -26,12 +25,10 @@ sub main {
     die("Must define a .mitrc config file");
   }
 
-  exit(0);
+  
   my $conf = YAML::Tiny->read("$ENV{'HOME'}/.mtibuildrc");
   $conf = $conf->[0];
-
-  my $dir = abs_path( cwd() );
-
+  my $dir = abs_path( $conf->{'repo-dir'} );
   my %summary;
   my @table = ( [qw{ repo ahead behind }] );
   foreach my $module ( @{ $conf->{'repositories'} } ) {
