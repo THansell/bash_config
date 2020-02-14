@@ -22,7 +22,7 @@ main();
 sub main {
 
   if ( !-f "$ENV{'HOME'}/.mtibuildrc" ) {
-    die("Must define a .mitrc config file");
+    die("Must define a .mtibuildrc config file");
   }
 
   
