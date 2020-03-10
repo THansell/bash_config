@@ -6,7 +6,7 @@ use Cwd qw( cwd abs_path );
 use File::Basename;
 use lib dirname(abs_path($0));
 use Getopt::Long;
-use YAML::Tiny;
+use YAML::XS 'LoadFile';
 
 use Toolkit;
 use Utilities qw( message green dump_table );
@@ -21,21 +21,31 @@ main();
 
 sub main {
 
-  if ( !-f "$ENV{'HOME'}/.mtibuildrc" ) {
-    die("Must define a .mtibuildrc config file");
+  my $configFile = "$ENV{'HOME'}/.mtibuildrc";
+  if ( ! -f $configFile ) {
+    die( "[$configFile] not found." );
   }
 
   
-  my $conf = YAML::Tiny->read("$ENV{'HOME'}/.mtibuildrc");
-  $conf = $conf->[0];
+  my $conf = LoadFile($configFile);
   my $dir = abs_path( $conf->{'repo-dir'} );
   my %summary;
   my @table = ( [qw{ repo ahead behind }] );
-  foreach my $module ( @{ $conf->{'repositories'} } ) {
+  foreach my $mod ( @{ $conf->{'repositories'} } ) {
+    my $module;
+    my $modBranch;
+    if ( ref $mod eq ref {} ) {
+      $module = $mod->{'name'};
+      $modBranch = $mod->{'branch'};
+    } else {
+      $module = $mod;
+      $modBranch = $opts{$module};
+    }
+
     message($module);
     chdir("$dir/$module");
 
-    my $branch = $opts{$module} || $conf->{'branch'};
+    my $branch = $modBranch|| $conf->{'branch'};
     if ( $branch eq 'master' && $module eq 'gdc_view' ) {
       $branch = 'develop';
     }
@@ -50,10 +60,10 @@ sub main {
     $rc = qx{ git rev-list --left-right --count origin/master...origin/$branch };
     chomp($rc);
     my ($behind,$ahead) = split(/\s*/, $rc);
-    if( $ahead > 0 ){
-    push(@table, [green($module), green($ahead), green($behind)]);
-    }else{
-    push(@table, [$module, $ahead, $behind]);
+    if( $ahead > 0 ) {
+      push(@table, [green($module), green($ahead), green($behind)]);
+    } else {
+      push(@table, [$module, $ahead, $behind]);
     }
   }
 

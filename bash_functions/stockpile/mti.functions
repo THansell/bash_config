@@ -1,4 +1,4 @@
-export MTI_REPO_DIR="$HOME/NGA/MTI/"
+export MTI_REPO_DIR="/usr/local/MTI/"
 
 CentOS() {
     cd ${myLocalGitArea}/mti-index/centos/bin
