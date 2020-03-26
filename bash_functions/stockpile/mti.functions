@@ -13,7 +13,16 @@ check_current_branches() {
   pushd $MTI_REPO_DIR > /dev/null
   for d in $(ls -d *)
   do
-    echo "  - { name: $d, branch: $(cd $d; current_branch) }"
+    if [ $(cd $d; current_branch) != "develop" ]; then
+      echo "  - { name: $d, branch: $(cd $d; current_branch) }"
+    fi  
+  done
+  echo "--Repositories on develop--"
+  for d in $(ls -d *)
+  do
+    if [ $(cd $d; current_branch) == "develop" ]; then
+      echo "  -  $d"
+    fi  
   done
   popd > /dev/null
 }
