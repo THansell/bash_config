@@ -20,18 +20,6 @@ mti_fetch_pull() {
   popd > /dev/null
 }
 
-mti_prune_branches() {
-  local d
-  pushd $MTI_REPO_DIR > /dev/null
-  for d in $(ls -d *)
-  do
-    echo "--start $d"
-    (cd $d; prune_branches.sh)
-    echo "--done $d"
-  done
-  popd > /dev/null
-}
-
 mti_checkoout_develop() {
   local d
   cd $MTI_REPO_DIR

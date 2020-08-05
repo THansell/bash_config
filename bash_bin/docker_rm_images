@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+image_pattern=$1
+
+echo "======= The Following Images match the patterm ========"
+docker images | grep -e $image_pattern
+echo "Do you want to delete them?"
+select yn in "Yes" "No"
+do
+  case $yn in
+    Yes )
+      echo "Deleting Images"
+      docker images | grep -e $image_pattern | tr -s ' ' | cut -d ' ' -f 1,2 | sed 's/ /:/' | xargs -I {}  docker rmi {}
+      ;;
+    No )
+      echo "Canceling image delete"
+  esac
+  exit
+done
