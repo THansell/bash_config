@@ -12,7 +12,7 @@ To activate the bash_function functionality place these lines of code at the end
 
 ```bash
 if [ -d ~/.bash_functions ]; then
-  for file in $(find -L ~/.bash_functions -maxdepth 1 -type f); do
+  for file in $(find -L ~/.bash_functions -maxdepth 1 -type f -not -name '.*' -prune); do
     source $file
   done
 elif [ -f ~/.bash_functions ]; then
@@ -43,7 +43,7 @@ change the .bashrc file to the following:
 
 ```bash
 if [ -d ~/.bash_aliases ]; then
-  for file in $(find -L ~/.bash_aliases -maxdepth 1 -type f); do
+  for file in $(find -L ~/.bash_aliases -maxdepth 1 -type f -not -name '.*' -prune); do
     source $file
   done
 elif [ -f ~/.bash_aliases ]; then
