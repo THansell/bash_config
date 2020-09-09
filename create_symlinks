@@ -18,10 +18,19 @@ fi
 if [ -d ${HOME}/.bash_aliases ]; then
     echo "[${HOME}/.bash-aliases] directory already exists. Won't overwrite it"
 elif [ -f ${HOME}/.bash_aliases ]; then
-    echo "[${HOME}/.bash-aliases] directory already exists. Won't overwrite it"
+    echo "[${HOME}/.bash-aliases] file already exists. Won't overwrite it"
 else
     echo ln -s $PWD/bash_aliases ${HOME}/.bash_aliases
     ln -s $PWD/bash_aliases ${HOME}/.bash_aliases
+fi
+
+if [ -d ${HOME}/.bash_bin ]; then
+  echo "[${HOME}/.bash_bin] directory already exists. Won't overwrite it"
+elif [ -f ${HOME}/.bash_bin ]; then
+  echo "[${HOME}/.bash_bin] file already exists. Won't overwrite it"
+else
+  echo ln -s $PWD/bash_bin ${HOME}/.bash_bin
+  ln -s $PWD/bash_bin ${HOME}/.bash_bin
 fi
 
 if [ -f ${HOME}/.vimrc ]; then

@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+PARAMS=""
+VERBOSE=0
+CONCISE=0
+
+while (( "$#" )); do
+  case $1 in
+    -v|--verbose)
+      VERBOSE=1
+      shift
+      ;;
+    -c|--concise)
+      CONCISE=1
+      shift
+      ;;
+    *) # Preserve any posiional arguments
+      PARAMS="$PARAMS $1"
+      shift;
+      ;;
+  esac
+done
+
+declare -a develop
+
+cd $MTI_REPO_DIR
+for d in $(ls -d */)
+do
+  BRANCH=$(cd $d; current_branch)
+  if [ $BRANCH != "develop" ]; then
+    if [[ $CONCISE -gt 0 ]]
+    then
+      REPORT="$d[ $BRANCH ]"
+    else
+      REPORT="  - { name: $d, branch: $BRANCH }"
+    fi
+    echo $REPORT
+  else
+    develop+=($d)    
+  fi
+done
+if [[ $VERBOSE -gt 0 ]]
+then
+  echo "--Repositories on develop--"
+  for d in "${develop[@]}"
+  do
+    echo "- $d"
+  done
+fi

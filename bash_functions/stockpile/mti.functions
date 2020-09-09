@@ -1,4 +1,4 @@
-export MTI_REPO_DIR="$HOME/NGA/MTI/"
+export MTI_REPO_DIR="/usr/local/MTI/"
 
 CentOS() {
     cd ${myLocalGitArea}/mti-index/centos/bin
@@ -8,25 +8,29 @@ CentOS() {
     ./docker_build.sh
 }
 
-check_current_branches() {
-    local d
-    cd $MTI_REPO_DIR
-    for d in $(ls -d */)
-    do
-        echo "$d::$(cd $d; current_branch)"
-    done
+mti_fetch_pull() {
+  local d
+  pushd $MTI_REPO_DIR > /dev/null
+  for d in $(ls -d *)
+  do
+    echo "--start $d"
+    (cd $d; git fetch -p; git pull)
+    echo "--done $d"
+  done
+  popd > /dev/null
 }
 
-mti_fetch_pull() {
+mti_checkoout_develop() {
   local d
   cd $MTI_REPO_DIR
   for d in $(ls -d */)
   do
     echo "--start $d"
-    (cd $d; git fetch -p; git pull)
+    (cd $d; git checkout develop; git pull)
     echo "$--done $d"
   done
 }
+
 edump () {
     local index=$1
     elasticdump \
@@ -34,4 +38,18 @@ edump () {
         --output=http://localhost:9200/$index \
         --type=data \
         --limit=200
+}
+
+sshaws () {
+  if [ -z "$1" ]; then
+    echo "No Host Specified"
+  elif [ "$1" == "demo" ]; then
+    ssh -i ~/.ssh/ngamtiuser.pem ec2-user@ec2-52-61-182-226.us-gov-west-1.compute.amazonaws.com
+  elif [ "$1" == "development" ]; then
+    ssh -i ~/.ssh/ngamtiuser.pem ubuntu@ec2-52-61-173-121.us-gov-west-1.compute.amazonaws.com
+  elif [ "$1" == "elastic" ]; then
+    ssh -i ~/.ssh/ngamtiuser.pem ec2-user@ec2-52-61-61-30.us-gov-west-1.compute.amazonaws.com
+  elif [ "$1" == "nifi" ]; then
+    ssh -i ~/.ssh/ngamtiuser.pem ec2-user@ec2-52-61-58-25.us-gov-west-1.compute.amazonaws.com
+  fi
 }

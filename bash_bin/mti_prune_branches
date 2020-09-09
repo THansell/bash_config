@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+cd $MTI_REPO_DIR
+for d in $(ls -d *)
+do
+  ( cd $d; prune_branches )
+done
