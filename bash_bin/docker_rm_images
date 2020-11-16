@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+if (( $# != 1 )); then
+  echo "Usage: $( basename $0) pattern"
+  echo "  pattern: pattern to match"
+  exit -1
+fi
+
 image_pattern=$1
 
 echo "======= The Following Images match the patterm ========"
