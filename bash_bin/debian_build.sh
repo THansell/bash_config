@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ -z $DEBIAN_IMAGE ] ; then
-  DEBIAN_IMAGE=debian_build:9.9
+  DEBIAN_IMAGE=debian_build:latest
 fi
 
 docker run -it --rm --name my-maven-project \
