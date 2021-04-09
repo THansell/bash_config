@@ -31,10 +31,18 @@ if [ $0 != $BASH_SOURCE ]; then
       printf "${RED_TEXT}  %s${NORMAL}\n" "$@"
     }
 
+    function echo_red {
+      printf "${RED_TEXT}%s${NORMAL}\n" "$@"
+    }
+
     function message_green {
       echo
       echo "====> " "$(date)"
       printf "${GREEN_TEXT}  %s${NORMAL}\n" "$@"
+    }
+
+    function echo_green {
+      printf "${GREEN_TEXT}%s${NORMAL}\n" "$@"
     }
   fi
 else
