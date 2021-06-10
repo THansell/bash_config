@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-#!/usr/bin/env bash
 #
 # Usage: maven_build/sh <build_image_name>
 # 
