@@ -24,6 +24,21 @@ else
     ln -s $PWD/bash_aliases ${HOME}/.bash_aliases
 fi
 
+if [ -f ${HOME}/.bash_completion ]; then
+    echo "[${HOME}/.bash-completion] file already exists. Won't overwrite it"
+else
+  echo ln -s $PWD/bash_completion ${HOME}/.bash_completion
+  ln -s $PWD/bash_completion ${HOME}/.bash_completion
+fi
+
+if [ -f ${HOME}/.bash_completion.d ]; then
+    echo "[${HOME}/.bash-completion.d] Directory already exists. Won't overwrite it"
+else
+  echo ln -s $PWD/bash_completion.d ${HOME}/.bash_completion.d
+  ln -s $PWD/bash_completion.d ${HOME}/.bash_completion.d
+fi
+
+
 if [ -d ${HOME}/.bash_bin ]; then
   echo "[${HOME}/.bash_bin] directory already exists. Won't overwrite it"
 elif [ -f ${HOME}/.bash_bin ]; then

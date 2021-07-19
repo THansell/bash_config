@@ -1,0 +1,6 @@
+_MEGASTAR_completions()
+{
+  COMPREPLY=($(compgen -W "$(cd /usr/local/MEGASTAR; ls -d *)" "${COMP_WORDS[1]}"))
+}
+
+complete -F _MEGASTAR_completions MEGASTAR
