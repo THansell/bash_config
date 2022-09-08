@@ -1,6 +1,0 @@
-_MTI_completions()
-{
-  COMPREPLY=($(compgen -W "$(cd /usr/local/MTI; ls -d *)" "${COMP_WORDS[1]}"))
-}
-
-complete -F _MTI_completions MTI
